@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./HomePage.module.scss";
 
 export default function HomePage() {
@@ -32,13 +33,15 @@ export default function HomePage() {
               Theo dõi thông tin và tiến độ học tập
             </p>
           </div>
-          <div className={`${styles.featureCard} ${styles.blue}`}>
-            <div className={styles.featureIcon}>📚</div>
-            <h3 className={styles.featureTitle}>Quản Lý Lớp Học</h3>
-            <p className={styles.featureDescription}>
-              Tổ chức và sắp xếp lịch học hiệu quả
-            </p>
-          </div>
+          <Link to="/assignment" className="block outline-none" style={{textDecoration: 'none'}}>
+            <div className={`${styles.featureCard} ${styles.blue} h-full`}>
+              <div className={styles.featureIcon}>📚</div>
+              <h3 className={styles.featureTitle}>Quản Lý Lớp Học</h3>
+              <p className={styles.featureDescription}>
+                Tổ chức và sắp xếp lịch học hiệu quả
+              </p>
+            </div>
+          </Link>
           <div className={`${styles.featureCard} ${styles.yellow}`}>
             <div className={styles.featureIcon}>🥋</div>
             <h3 className={styles.featureTitle}>Quản Lý Thi Đấu</h3>
@@ -49,9 +52,9 @@ export default function HomePage() {
         </div>
 
         <div className={styles.actions}>
-          <a href="/login" className={styles.buttonPrimary}>
+          <Link to="/login" className={styles.buttonPrimary}>
             Đăng Nhập
-          </a>
+          </Link>
           <button className={styles.buttonSecondary}>Tìm Hiểu Thêm</button>
         </div>
       </div>

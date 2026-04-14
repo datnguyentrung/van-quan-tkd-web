@@ -1,5 +1,6 @@
 import { LoginPage } from "@/features/auth";
 import HomePage from "@/pages/HomePage";
+import ClassAssignmentPage from "@/pages/ClassAssignmentPage/ClassAssignmentPage";
 import { Navigate, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 
@@ -9,6 +10,7 @@ export default function AppRoutes() {
       {/* Public Routes */}
       <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/assignment" element={<ClassAssignmentPage />} />
 
       {/* Protected Routes */}
       <Route

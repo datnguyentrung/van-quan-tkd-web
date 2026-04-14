@@ -21,4 +21,14 @@ export default defineConfig({
       "@types": path.resolve(__dirname, "./src/types"),
     },
   },
+  // Kết nối BE
+  server: {
+    proxy: {
+      "/api": {
+        target: "http://localhost:8080",
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+  },
 });

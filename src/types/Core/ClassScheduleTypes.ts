@@ -36,3 +36,16 @@ export interface ClassScheduleDetail {
   maxCapacity: number | null;
   note: string | null;
 }
+
+/**
+ * Khớp với ClassScheduleResDTO.ClassScheduleDropdown (Backend)
+ * Dùng cho Cascading Dropdown: Chọn Chi nhánh -> hiện danh sách Lớp học
+ */
+export interface ClassScheduleDropdown {
+  /** Value để FE gửi lên khi submit form */
+  scheduleId: string;
+  /** Label hiển thị (VD: "MONDAY (08:30 - 10:00) - BASIC INDOOR") */
+  displayLabel: string;
+  scheduleLevel: string;
+  weekday: string;
+}

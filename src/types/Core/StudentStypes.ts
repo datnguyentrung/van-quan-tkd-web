@@ -67,3 +67,29 @@ export interface StudentSummary {
   email: string;
   code: string;
 }
+
+/** DTO trả về cho 1 võ sinh trong danh sách gợi ý */
+export interface StudentAutocompleteDTO {
+  userId: string;
+  studentCode: string;
+  fullName: string;
+  nationalCode: string;
+  branchName: string;
+  studentStatus: string;
+}
+
+// Kiểu dữ liệu phân trang (chung cho Spring Data)
+export interface PageResponse<T> {
+  content: T[];
+  pageable: any;
+  last: boolean;
+  totalPages: number;
+  totalElements: number;
+  size: number;
+  number: number;
+  first: boolean;
+  numberOfElements: number;
+  empty: boolean;
+}
+
+
