@@ -98,6 +98,7 @@ export const ClassAssignmentModal = () => {
         joinDate: enrollmentDate,
       });
       setIsSuccess(true);
+      setCurrentStep(3);
     } catch (error: any) {
       console.error("Enrollment error:", error);
       const backendMessage = error.response?.data?.message;
