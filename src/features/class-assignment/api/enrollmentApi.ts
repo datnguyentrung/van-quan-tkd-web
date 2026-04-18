@@ -18,4 +18,21 @@ export const enrollmentApi = {
   create: async (request: StudentEnrollmentCreateRequest): Promise<void> => {
     await axiosInstance.post('/api/v1/student-enrollments', request);
   },
+
+  /**
+   * Lấy danh sách lớp đang ACTIVE của võ sinh
+   * GET /api/v1/student-enrollments/student/{id}
+   */
+  fetchByStudentId: async (studentId: string): Promise<any[]> => {
+    const response = await axiosInstance.get(`/api/v1/student-enrollments/student/${studentId}`);
+    return response.data;
+  },
+
+  /**
+   * Xóa ghi danh của võ sinh trong lớp
+   * DELETE /api/v1/student-enrollments/student/{studentId}/class-schedule/{classScheduleId}
+   */
+  remove: async (studentId: string, scheduleId: string): Promise<void> => {
+    await axiosInstance.delete(`/api/v1/student-enrollments/student/${studentId}/class-schedule/${scheduleId}`);
+  },
 };

@@ -1,7 +1,6 @@
 // File: src/features/class-assignment/components/StudentSearch/StudentSearch.tsx
 import { useState, useEffect, useRef } from "react";
 import { Search, X, Loader2 } from "lucide-react";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { cn } from "@/components/ui/utils";
 
 import type { StudentAutocompleteDTO } from "@/types/Core/StudentStypes";
@@ -142,14 +141,6 @@ export default function StudentSearch({ selectedStudent, onSelect, onClear }: St
           <div className={cn(styles.scBadge, (selectedStudent.studentStatus === 'ACTIVE' || selectedStudent.studentStatus === 'Đang hoạt động') && styles.statusActive)}>
             {selectedStudent.studentStatus}
           </div>
-          <button
-            onClick={onClear}
-            className="p-1.5 rounded-lg hover:brightness-90 transition-all ml-2 shadow-sm active:scale-95 flex items-center justify-center"
-            style={{ backgroundColor: '#C0392B', color: 'white' }}
-            title="Xóa lựa chọn"
-          >
-            <X size={16} />
-          </button>
         </div>
       )}
     </div>

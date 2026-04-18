@@ -24,23 +24,22 @@
 /* ============================================================ */
 
 .pageContainer {
-  min-height: calc(100vh - 4rem);
-  background: var(--tkd-bg);
-  color: var(--tkd-text);
+  min-height: 100vh;
+  background: radial-gradient(circle at top right, #ffffff, #f0f2f5);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 40px 24px;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 
   &::before {
     content: '';
     position: absolute;
     inset: 0;
     background: 
-      radial-gradient(ellipse 60% 50% at 10% 20%, rgba(192, 57, 43, 0.05) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 40% at 90% 80%, rgba(212, 160, 23, 0.04) 0%, transparent 55%);
+      radial-gradient(ellipse 60% 50% at 10% 20%, rgba(192, 57, 43, 0.04) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 90% 80%, rgba(212, 160, 23, 0.03) 0%, transparent 55%);
     pointer-events: none;
   }
 }
@@ -50,7 +49,7 @@
   border: 1px solid var(--tkd-border);
   border-radius: 20px;
   width: 100%;
-  max-width: 680px;
+  max-width: 1000px;
   max-height: 90vh;
   box-shadow: var(--tkd-shadow), 0 0 0 1px rgba(192, 57, 43, 0.08);
   position: relative;
@@ -134,10 +133,10 @@
 .modalBody {
   flex: 1;
   overflow-y: auto;
-  padding: 28px 32px;
+  padding: 24px 32px 32px;
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 24px;
 
   /* Premium Scrollbar */
   &::-webkit-scrollbar {
@@ -278,6 +277,193 @@
 .inputWithSearch {
   @extend .inputField;
   padding-left: 40px;
+}
+
+/* New Filter Row */
+.filterRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 16px;
+  background: var(--tkd-bg3);
+  padding: 24px;
+  border-radius: var(--tkd-radius);
+  border: 1px solid var(--tkd-border);
+  margin-bottom: 8px;
+}
+
+.classSelectionArea {
+  grid-column: 1 / -1; // Span full width
+  margin-top: 4px;
+  padding-top: 16px;
+  border-top: 1px solid var(--tkd-border);
+}
+
+.branchScheduleBox {
+  max-height: 220px;
+  overflow-y: auto;
+  border: 1.5px solid var(--tkd-border);
+  border-radius: var(--tkd-radius);
+  padding: 12px;
+  background: #fff;
+  margin-top: 8px;
+
+  /* Custom scrollbar for premium feel */
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--tkd-border);
+    border-radius: 10px;
+  }
+}
+
+.classItemCompact {
+  padding: 10px 14px !important;
+  gap: 10px !important;
+  margin-bottom: 4px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .classCheck {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+  }
+}
+
+.btnAdd {
+  @extend .btnPrimary;
+  height: 46px; 
+  align-self: end;
+  padding: 0 24px;
+  border-radius: var(--tkd-radius);
+  font-size: 14px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btnSmallSquare {
+  background-color: var(--tkd-red-lt);
+  color: white;
+  padding: 6px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  box-shadow: 0 2px 4px rgba(192, 57, 43, 0.2);
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(0.9);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    scale: 0.95;
+    transform: translateY(0);
+  }
+}
+
+/* Management Lists */
+.manageSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sectionTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--tkd-text);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--tkd-red-lt);
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.removalSection {
+  margin-top: 20px;
+  padding: 24px;
+  background: rgba(192, 57, 43, 0.04);
+  border: 2px dashed var(--tkd-red-lt);
+  border-radius: var(--tkd-radius);
+  animation: fadeIn .3s ease;
+
+  .classItem {
+    background: #fff !important; // Ensure white background for high contrast
+    opacity: 1 !important;        // Force full opacity
+    border-color: rgba(192, 57, 43, 0.2);
+    
+    &:hover {
+      border-color: var(--tkd-red-lt);
+    }
+  }
+}
+
+.removalList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.btnConfirmRemoval {
+  @extend .btnPrimary;
+  width: 100%;
+  justify-content: center;
+  padding: 14px;
+}
+
+/* Action Buttons inside cards */
+.deleteWrapper {
+  margin-left: auto;
+  padding-left: 12px;
+  border-left: 1px solid var(--tkd-border);
+}
+
+.btnDelete {
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid var(--tkd-red-lt);
+  color: var(--tkd-red-lt);
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .2s;
+  text-transform: uppercase;
+
+  &:hover {
+    background: var(--tkd-red-lt);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(192, 57, 43, 0.2);
+  }
+}
+
+.btnUndo {
+  @extend .btnDelete;
+  border-color: var(--tkd-muted);
+  color: var(--tkd-muted);
+
+  &:hover {
+    background: var(--tkd-muted);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
 }
 
 .autocomplete {

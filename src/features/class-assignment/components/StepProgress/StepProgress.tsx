@@ -7,8 +7,7 @@ import styles from "../../styles/ClassAssignment.module.scss";
 /** Cấu hình từng bước trong thanh tiến trình */
 const STEPS = [
   { num: 1, label: "Chọn Võ sinh" },
-  { num: 2, label: "Chọn Chi nhánh & Lớp" },
-  { num: 3, label: "Xác nhận" },
+  { num: 2, label: "Xếp lớp" },
 ];
 
 interface StepProgressProps {
