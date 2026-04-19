@@ -4,8 +4,8 @@ import type { LoginResponse, UserBase, UserLogin } from "@/types";
 
 export const authApi = {
   login: async (loginReq: UserBase): Promise<LoginResponse> => {
-    // Trả về data luôn, code siêu ngắn
-    const response = await axiosInstance.post("/auth/login", { loginReq });
+    // SỬA Ở ĐÂY: Truyền trực tiếp loginReq, KHÔNG bọc trong {}
+    const response = await axiosInstance.post("/auth/login", loginReq);
     return response.data;
   },
 

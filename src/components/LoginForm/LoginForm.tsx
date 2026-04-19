@@ -1,5 +1,6 @@
 import { Eye, EyeOff, Lock, Phone } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // ✅ 1. Thêm import chuyển trang
 import { useLogin } from "../../features/auth/api/useAuthentication";
 import styles from "./LoginForm.module.scss";
 
@@ -8,15 +9,39 @@ export default function LoginForm() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  const navigate = useNavigate(); // ✅ 2. Khởi tạo hàm chuyển trang
+
   const { mutate: login, isPending } = useLogin();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    login({
-      phoneNumber,
-      password,
-      idDevice: navigator.userAgent,
-    });
+    
+    // ✅ 3. Sửa lại chỗ gọi login: Thêm cục onSuccess để cất token và bay sang Dashboard
+    login(
+      {
+        phoneNumber,
+        password,
+        idDevice: navigator.userAgent,
+      },
+      {
+        onSuccess: (response: any) => {
+          // Lấy token từ API trả về (tùy theo API của ông ghi là access_token hay accessToken)
+          const token = response?.access_token || response?.accessToken; 
+          
+          if (token) {
+            // Cất vé vào ví (localStorage)
+            localStorage.setItem("access_token", token);
+          }
+          
+          // Chuyển thẳng sang Dashboard
+          navigate("/dashboard");
+        },
+        onError: (error) => {
+          console.error("Lỗi đăng nhập:", error);
+          alert("Sai tài khoản hoặc mật khẩu!");
+        }
+      }
+    );
   };
 
   return (

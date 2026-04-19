@@ -5,8 +5,9 @@ interface ProtectedRouteProps {
 }
 
 export default function ProtectedRoute({ children }: ProtectedRouteProps) {
-  // TODO: Replace with actual authentication logic from authStore
-  const isAuthenticated = false; // Temporary - will use authStore later
+  // Temporary dev mode: allow access to protected routes while auth is not implemented.
+  // Replace with actual authentication logic from authStore later.
+  const isAuthenticated = true;
 
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;

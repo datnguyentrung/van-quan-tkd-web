@@ -1,5 +1,7 @@
 import { LoginPage } from "@/features/auth";
 import HomePage from "@/pages/HomePage";
+import DashboardPage from "@/pages/DashboardPage";
+import StudentListPage from "@/pages/StudentListPage/StudentListPage";
 import { Navigate, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 
@@ -15,12 +17,15 @@ export default function AppRoutes() {
         path="/dashboard"
         element={
           <ProtectedRoute>
-            <div className="p-8">
-              <h1 className="text-3xl font-bold">Dashboard</h1>
-              <p className="text-gray-600 mt-2">
-                Trang chủ sau khi đăng nhập - Coming soon!
-              </p>
-            </div>
+            <DashboardPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/students"
+        element={
+          <ProtectedRoute>
+            <StudentListPage />
           </ProtectedRoute>
         }
       />
